@@ -2,7 +2,7 @@
 INSERT INTO public."USER" (
 id, "Email", "Nachname", "Passwort", "Role", "Vorname") VALUES (
 '1'::bigint, 'Test@Email.test
-'::character varying, 'Nachname'::character varying, '123456'::character varying, 'Mitglied'::character varying, 'Vorname'::character varying)
+'::character varying, 'Nachname'::character varying, '123456'::character varying, 'Admin'::character varying, 'Vorname'::character varying)
  returning id;
 
 INSERT INTO public."BUCHUNG" (

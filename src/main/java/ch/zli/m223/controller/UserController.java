@@ -1,15 +1,10 @@
 package ch.zli.m223.controller;
-
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-
-
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
-
 import ch.zli.m223.model.User;
 import ch.zli.m223.service.UserService;
 
@@ -49,7 +44,7 @@ public class UserController {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Updates a new entry.", description = "Updates a new entry and returns the newly added entry.")
+    @Operation(summary = "Updated einen Benutzer", description = "Updated einen Benutzer in der Datenbank und gibt diesen gleich zurück")
     public User update(int id, User user) {
         return userService.update(id, user);
     }

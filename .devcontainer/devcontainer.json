@@ -4,7 +4,7 @@
   "name": "LernkontrolleB_YvesHuber",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/Modul223Abschluss",
+  "workspaceFolder": "/workspace",
 
   // Configure tool-specific properties.
   "customizations": {

@@ -1,4 +1,4 @@
-package ch.zli.m223;
+/*package ch.zli.m223;
 
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
@@ -52,4 +52,4 @@ public class EntryResourceTest {
             .body(is("{\"id\":2,\"checkIn\":\""+entry.getCheckIn().toString()+"\",\"checkOut\":\""+entry.getCheckOut().toString()+"\"}"));
     }
 
-}
+}*/

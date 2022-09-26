@@ -25,6 +25,11 @@ public class UserService {
         return query.getResultList();
     }
 
+    public User findById(long id) {
+        var query = entityManager.find(User.class, id);
+        return query;
+    }
+
     @Transactional
     public void delete(long id){
         User user = entityManager.find(User.class,id);

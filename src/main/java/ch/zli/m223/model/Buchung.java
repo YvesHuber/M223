@@ -15,7 +15,7 @@ public class Buchung {
   @Schema(readOnly = true)
   private Long id;
 
-  @Column(name="Public")
+  @Column(name="Visablility")
   private boolean visability;
 
   @Column(name="Status")
@@ -34,9 +34,8 @@ public class Buchung {
   @JoinColumn(name = "user_id")
   private User user;
  
+    
 
-  
- 
 
     /**
      * @return Long return the id
@@ -52,6 +51,19 @@ public class Buchung {
         this.id = id;
     }
 
+    /**
+     * @return boolean return the visability
+     */
+    public boolean isVisability() {
+        return visability;
+    }
+
+    /**
+     * @param visability the visability to set
+     */
+    public void setVisability(boolean visability) {
+        this.visability = visability;
+    }
 
     /**
      * @return String return the status
@@ -81,6 +93,19 @@ public class Buchung {
         this.begründung = begründung;
     }
 
+    /**
+     * @return LocalDate return the datum
+     */
+    public LocalDate getDatum() {
+        return datum;
+    }
+
+    /**
+     * @param datum the datum to set
+     */
+    public void setDatum(LocalDate datum) {
+        this.datum = datum;
+    }
 
     /**
      * @return boolean return the halbtag
@@ -96,7 +121,7 @@ public class Buchung {
         this.halbtag = halbtag;
     }
 
-        /**
+    /**
      * @return User return the user
      */
     public User getUser() {
@@ -108,35 +133,6 @@ public class Buchung {
      */
     public void setUser(User user) {
         this.user = user;
-    }
-
-
-    /**
-     * @return boolean return the visability
-     */
-    public boolean isVisability() {
-        return visability;
-    }
-
-    /**
-     * @param visability the visability to set
-     */
-    public void setVisability(boolean visability) {
-        this.visability = visability;
-    }
-
-    /**
-     * @return LocalDate return the datum
-     */
-    public LocalDate getDatum() {
-        return datum;
-    }
-
-    /**
-     * @param datum the datum to set
-     */
-    public void setDatum(LocalDate datum) {
-        this.datum = datum;
     }
 
 }

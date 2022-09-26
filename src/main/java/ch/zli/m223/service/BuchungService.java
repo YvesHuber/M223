@@ -1,16 +1,20 @@
 package ch.zli.m223.service;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.hibernate.Criteria;
 
 import ch.zli.m223.model.Buchung;
+import ch.zli.m223.model.User;
 
 @ApplicationScoped
 public class BuchungService {
@@ -25,6 +29,11 @@ public class BuchungService {
 
     public List<Buchung> findAll() {
         var query = entityManager.createQuery("FROM Buchung", Buchung.class);
+        return query.getResultList();
+    }
+
+    public List<Buchung> findAllOfUser(User user) {
+        var query = entityManager.createQuery("FROM Buchung Where user_id = "+user, Buchung.class);
         return query.getResultList();
     }
 

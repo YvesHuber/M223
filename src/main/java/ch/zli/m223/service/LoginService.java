@@ -5,9 +5,6 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-
-
-import ch.zli.m223.Security.GenerateToken;
 import ch.zli.m223.model.User;
 
 @ApplicationScoped
@@ -22,7 +19,7 @@ public class LoginService {
         var query = entityManager.createQuery("FROM User", User.class).getResultList();
         for (User user2 : query) {
             if(user2.getVorname().equals(user.getVorname()) && user2.getPasswort().equals(user.getPasswort())){
-                token = GenerateToken.returnkey(user.getEmail(), user.getRole());
+                token = AuthenticationService.returnkey(user2);
             }
             else{
                 token = "Unsuccessfull login";

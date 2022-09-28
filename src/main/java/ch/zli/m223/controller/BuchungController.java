@@ -12,9 +12,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import ch.zli.m223.model.Buchung;
-import ch.zli.m223.model.User;
 import ch.zli.m223.service.BuchungService;
-import ch.zli.m223.service.UserService;
 
 @Path("/Buchung")
 @Tag(name = "Buchung", description = "Handling of Buchungen")
@@ -29,7 +27,7 @@ public class BuchungController {
     @GET
     @RolesAllowed({ "Mitglied", "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Gibt Alle Benutzer zurück", description = "Gibt eine Liste mit allen Benutzern in der Datenbank zurück")
+    @Operation(summary = "Gibt Alle Buchungen zurück", description = "Gibt alle buchugen zurück bei einem Admin und alle vom User bei einem Mitglied")
     public List<Buchung> index() throws Exception {
         try {
             var userid = jwt.getName();
@@ -49,7 +47,7 @@ public class BuchungController {
     @GET
     @RolesAllowed({ "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Gibt Alle Benutzer zurück", description = "Gibt eine Liste mit allen Benutzern in der Datenbank zurück")
+    @Operation(summary = "Gibt eine Buchung zurück mit der id ", description = "Gibt eine Buchung zurück mit der id ")
     public Buchung getById(long id) throws Exception {
         try {
             return buchungService.findById(id);
@@ -74,7 +72,7 @@ public class BuchungController {
     @RolesAllowed({ "Mitglied", "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Erstellt einen neuen Benutzer", description = "Erstellt einen neuen Benutzer in der Datenbank und gibt diesen neuen Benutzer zurück.")
+    @Operation(summary = "Erstellt eine Buchung", description = "Erstellt eine Buchung")
     public Buchung create(Buchung Buchung) throws Exception {
         try {
             return buchungService.create(Buchung);
@@ -86,7 +84,7 @@ public class BuchungController {
     @Path("{id}")
     @DELETE
     @RolesAllowed({ "Admin" })
-    @Operation(summary = "Löscht einen Benutzer", description = "Löscht einen Benutzer")
+    @Operation(summary = "Löscht eine Buchung", description = "Löscht eine Buchung")
     public void delete(int id) throws Exception {
         try {
             buchungService.delete(id);
@@ -101,7 +99,7 @@ public class BuchungController {
     @RolesAllowed({"Mitglied", "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Updated einen Benutzer", description = "Updated einen Benutzer in der Datenbank und gibt diesen gleich zurück")
+    @Operation(summary = "Updated eine Buchung", description = "Updated eine Buchen in der Datenbank und gibt diese gleich zurück")
     public Response update(int id, Buchung Buchung) throws Exception {
         try {
             return buchungService.update(id, Buchung);

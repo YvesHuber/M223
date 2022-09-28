@@ -13,7 +13,6 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
 import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
-
 import ch.zli.m223.model.User;
 import ch.zli.m223.service.UserService;
 
@@ -47,15 +46,15 @@ public class UserController {
     public Response getById(long id) {
         try {
             String userid = id + "";
-            if(userid.equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")){
+            if (userid.equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")) {
 
-            return Response.ok(userService.findById(id)).build();
+                return Response.ok(userService.findById(id)).build();
             }
             return Response.ok("Not Valid User").build();
 
         } catch (Exception e) {
             System.out.println(e);
-           return Response.status(Response.Status.BAD_REQUEST).build();
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
     }
 
@@ -74,25 +73,21 @@ public class UserController {
 
     @Path("{id}")
     @DELETE
-    @RolesAllowed({"Mitglied", "Admin" })
+    @RolesAllowed({ "Admin" })
     @Operation(summary = "Löscht einen Benutzer", description = "Löscht einen Benutzer")
     public Response delete(int id) throws Exception {
         try {
-            try {
-                String userid = id + "";
-                if(userid.equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")){
-    
+            String userid = id + "";
+            if (userid.equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")) {
+
                 userService.delete(id);
                 return Response.ok("Deleted User").build();
-                }
-                return Response.ok("Not Valid User").build();
-    
-            } catch (Exception e) {
-                System.out.println(e);
-               return Response.status(Response.Status.BAD_REQUEST).build();
             }
+            return Response.ok("Not Valid User").build();
+
         } catch (Exception e) {
-            throw e;
+            System.out.println(e);
+            return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
     }
@@ -105,7 +100,7 @@ public class UserController {
     @Operation(summary = "Updated einen Benutzer", description = "Updated einen Benutzer in der Datenbank und gibt diesen gleich zurück")
     public User update(int id, User user) throws Exception {
         try {
-            
+
             return userService.update(id, user);
         } catch (Exception e) {
             throw e;

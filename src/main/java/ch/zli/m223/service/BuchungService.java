@@ -1,5 +1,6 @@
 package ch.zli.m223.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -42,8 +43,15 @@ public class BuchungService {
 
     public List<Buchung> findAllOfUser(String userid) throws Exception {
         try {
-            var query = entityManager.createQuery("FROM Buchung Where user_id = " + userid, Buchung.class);
-            return query.getResultList();
+            List<Buchung> buchungen = new ArrayList<>();
+            var query = entityManager.createQuery("FROM Buchung", Buchung.class);
+            for (Buchung buchung : query.getResultList()) {
+                if(buchung.getUser().getId().toString().equals(userid)){
+                    buchungen.add(buchung);
+                }
+                
+            }
+            return buchungen;
         } catch (Exception e) {
             throw e;
         }

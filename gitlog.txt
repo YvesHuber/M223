@@ -1,0 +1,199 @@
+commit 540792e060e87dfff847d855e672929f219d025d
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 13:38:49 2022 +0000
+
+    Updated Readme with login data
+
+commit d6c35d99677acb9722439fd7e4456dfb0281bb46
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 13:38:41 2022 +0000
+
+    Formatting
+
+commit 2992585100b75ac3b277b4e6b365423eed0f4fd0
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 13:14:50 2022 +0000
+
+    Fixxed Warnings
+
+commit c1dbb2ff0439aa2f76a4b8c78e23fa130637b820
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 13:14:38 2022 +0000
+
+    Added Github Link
+
+commit 0b2a4bdd7063244d6c7dfd8113efe4ea73d33816
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 12:46:48 2022 +0000
+
+    End to End testing for allmost all endpoint
+
+commit 1cd8424c00637923983b556ca2deb90642f9b56b
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 12:45:44 2022 +0000
+
+    Fixxed bug with user Get
+
+commit 1fb394bef1a4bbb7636a9202c89c24d21487bd10
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 12:05:56 2022 +0000
+
+    Updated Delete function
+
+commit 9d8202fb0a2009bdd33b065887eb22c26cb46ce6
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 11:32:50 2022 +0000
+
+    Added Exceptions and constrained Access for Mitglied
+
+commit ae73301b6b05b4d996f2d5bb466c13f68e584f97
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 11:32:18 2022 +0000
+
+    Added Constraint
+
+commit ba4bd3fc4c24c29be6848f50f188dcb4a7249903
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 11:32:13 2022 +0000
+
+    Added Testing Dependency
+
+commit 22f16b7b32e18e644713116cb72b2fe4f868633b
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 11:32:04 2022 +0000
+
+    Updated Operations of Controllers
+
+commit a420650613e141c389c718224af79d6eea709c21
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 10:57:52 2022 +0000
+
+    Fixxed error with id
+
+commit c7fba8731f48381fcc64ef156b493eccdc14fcf4
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 09:44:36 2022 +0000
+
+    Updated Import data
+
+commit defdef7c2dc0f1935e24d06014c4f99e534c3ba6
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 09:44:23 2022 +0000
+
+    Added Testing and removed not needed file
+
+commit 5716600e71f37757b547bace76dbafd8e15ebcd9
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 09:43:56 2022 +0000
+
+    Updated Readme
+
+commit e1cd313c7618637ce22ef41bc69ab48a9f55e09f
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 09:43:48 2022 +0000
+
+    Added Exeptions for at least 2 functions in each controller
+
+commit c1975b66e45f0dbdbd423bdf79b9ffbefac33c69
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 08:21:33 2022 +0000
+
+    found mistake with autoincrement
+
+commit 4db5e2b4b4223a8e74f3194c11caff5f7fb37f5d
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 08:21:25 2022 +0000
+
+    fixxed injection bug
+
+commit d57009c54fe1c14b8caead3d531276e395fab5cf
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 07:32:35 2022 +0000
+
+    Updated TestData
+
+commit f17f7917740ef5303ccee7619d9883fcc75842df
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 07:32:25 2022 +0000
+
+    Exception Handeling
+
+commit c44304074e681cf2ef9a2a5b726349badf6d1226
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 07:12:23 2022 +0000
+
+    Updated Buchungsservice to give different Returns depending on Role
+
+commit 331edbc13ce02eaa884f5ff2116a7d1525bc36d6
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Wed Sep 28 07:11:55 2022 +0000
+
+    Updated Login to Use Login Class instead of User
+
+commit 0cf1fd28b77ec7d3d519532434ae1db1adc6d9fb
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 14:37:49 2022 +0000
+
+    Updated All functions to use jwt token for Access
+
+commit d3ed20587fb9a51f32a25cb8c2fe40c86d91d5ac
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 13:26:52 2022 +0000
+
+    Added Login for a JWT
+
+commit 22c90dce47191a8bc8b1d2e71613d2a8c9c7c585
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 13:26:38 2022 +0000
+
+    Added Test Data to Project
+
+commit 512b907d131a9a47395406428edf997c779d538f
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 13:26:27 2022 +0000
+
+    Updated User Crud to search for a single User
+
+commit c0e3538cd3dbb9739b20a48b280fd5a10687da26
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 13:26:00 2022 +0000
+
+    Created Buchungs Crud
+
+commit d206780aa6e142e54ab35871fa62f4a6ab3cf045
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 13:25:31 2022 +0000
+
+    Updated Readme
+
+commit 6f233a5fe4c6a2e558b69ce07916eb0abe22bb70
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 11:14:36 2022 +0000
+
+    Updated Properties and Added Test Data
+
+commit ebfc1101a4437321d2d1606d8bfd76bd43472bbd
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 08:52:31 2022 +0000
+
+    Removed redundant files
+
+commit 78398c7ae48a3ffd1eb60feac6f0f647844ddadd
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 08:47:03 2022 +0000
+
+    Fixxed Error with ManyToOne Relation
+
+commit 36c2cd12b822a736c6e6f81411ce876fbb138c58
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 08:28:50 2022 +0000
+
+    Removed Old files and Added the new Files.
+    Created User Service and Controller.
+    And Added All Models
+
+commit 3cf97d5bb57a2c91c46457766c022188264c2416
+Author: Yves Huber <yves.huber@lernende.bbw.ch>
+Date:   Mon Sep 26 06:54:47 2022 +0000
+
+    Initial Commit

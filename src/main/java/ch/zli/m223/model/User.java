@@ -1,5 +1,4 @@
 package ch.zli.m223.model;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -7,11 +6,14 @@ import javax.persistence.*;
 
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
-import com.fasterxml.jackson.databind.deser.DataFormatReaders.Match;
 
 
 @Entity
-@Table(name="USER")
+@Table(
+    name="USER",
+    uniqueConstraints=
+    @UniqueConstraint(columnNames ={"Email"})
+)
 public class User {
 
   @Id
@@ -131,4 +133,9 @@ public class User {
         this.role = role;
     }
 
+    @Override
+    public String toString() {
+        return "{\"id\"\""+this.id+"\",\"vorname\":\""+this.vorname+"\",\"nachname\":\""+this.nachname+"\",\"email\":\"Yves.Huber@Gmail.com\",\"passwort\":\"Secure Password\",\"role\":\"Admin\"}";
+
+    }
 }

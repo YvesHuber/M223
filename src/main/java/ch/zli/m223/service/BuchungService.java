@@ -1,20 +1,13 @@
 package ch.zli.m223.service;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-import org.eclipse.microprofile.jwt.JsonWebToken;
-import org.hibernate.Criteria;
-
 import ch.zli.m223.model.Buchung;
-import ch.zli.m223.model.User;
 
 @ApplicationScoped
 public class BuchungService {
@@ -22,45 +15,74 @@ public class BuchungService {
     private EntityManager entityManager;
 
     @Transactional
-    public Buchung create(Buchung buchung) {
-        entityManager.persist(buchung);
-        return buchung;
+    public Buchung create(Buchung buchung) throws Exception {
+        try {
+            entityManager.persist(buchung);
+            return buchung;
+        } catch (Exception e) {
+            throw e;
+        }
+
     }
 
-    public List<Buchung> findAll() {
-        var query = entityManager.createQuery("FROM Buchung", Buchung.class);
-        return query.getResultList();
+    public List<Buchung> findAll() throws Exception {
+        try {
+            var query = entityManager.createQuery("FROM Buchung", Buchung.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            throw e;
+        }
+
     }
 
-    public List<Buchung> findAllOfUser(String userid) {
-        var query = entityManager.createQuery("FROM Buchung Where user_id = "+userid, Buchung.class);
-        return query.getResultList();
+    public List<Buchung> findAllOfUser(String userid) throws Exception {
+        try {
+            var query = entityManager.createQuery("FROM Buchung Where user_id = " + userid, Buchung.class);
+            return query.getResultList();
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
-    public Buchung findById(long id) {
-    var query = entityManager.find(Buchung.class, id);
-    return query;
+    public Buchung findById(long id) throws Exception {
+        try {
+            var query = entityManager.find(Buchung.class, id);
+            return query;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
+    public List<Buchung> findAllPublic() throws Exception {
+        try {
 
-    public List<Buchung> findAllPublic() {
-        
-        List<Buchung> buchungen = entityManager.createQuery("FROM Buchung WHERE visability = true", Buchung.class).getResultList();
-        return buchungen;
+            List<Buchung> buchungen = entityManager.createQuery("FROM Buchung WHERE visability = true", Buchung.class)
+                    .getResultList();
+            return buchungen;
+        } catch (Exception e) {
+            throw e;
+        }
     }
-
 
     @Transactional
-    public void delete(long id){
-        Buchung buchung = entityManager.find(Buchung.class,id);
-        entityManager.remove(buchung);
+    public void delete(long id) throws Exception {
+        try {
+            Buchung buchung = entityManager.find(Buchung.class, id);
+            entityManager.remove(buchung);
+        } catch (Exception e) {
+            throw e;
+        }
 
     }
-    
+
     @Transactional
-    public Buchung update(long id, Buchung buchung){
-        entityManager.merge(buchung);
-        return buchung;
+    public Buchung update(long id, Buchung buchung) throws Exception {
+        try {
+            entityManager.merge(buchung);
+            return buchung;
+        } catch (Exception e) {
+            throw e;
+        }
     }
-    
+
 }

@@ -1,4 +1,5 @@
 package ch.zli.m223.controller;
+
 import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
@@ -14,7 +15,6 @@ import ch.zli.m223.model.User;
 import ch.zli.m223.service.BuchungService;
 import ch.zli.m223.service.UserService;
 
-
 @Path("/Buchung")
 @Tag(name = "Buchung", description = "Handling of Buchungen")
 public class BuchungController {
@@ -24,68 +24,89 @@ public class BuchungController {
 
     @Inject
     JsonWebToken jwt;
-    
 
     @GET
-    @RolesAllowed({"Mitglied", "Admin"}) 
+    @RolesAllowed({ "Mitglied", "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Gibt Alle Benutzer zurück", description = "Gibt eine Liste mit allen Benutzern in der Datenbank zurück")
-    public List<Buchung> index() {
-        var userid = jwt.getName();
-        var groups = jwt.getGroups();
-        if (groups.iterator().next().equals("Admin")){
-            return buchungService.findAll();
+    public List<Buchung> index() throws Exception {
+        try {
+            var userid = jwt.getName();
+            var groups = jwt.getGroups();
+            if (groups.iterator().next().equals("Admin")) {
+                return buchungService.findAll();
+            } else {
+                return buchungService.findAllOfUser(userid);
+            }
+        } catch (Exception e) {
+            throw e;
         }
-        else {
-            return buchungService.findAllOfUser(userid);
-        }
-        
+
     }
 
     @Path("{id}")
     @GET
-    @RolesAllowed({"Admin"}) 
+    @RolesAllowed({ "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Gibt Alle Benutzer zurück", description = "Gibt eine Liste mit allen Benutzern in der Datenbank zurück")
-    public Buchung getById(long id) {
-        return buchungService.findById(id);
+    public Buchung getById(long id) throws Exception {
+        try {
+            return buchungService.findById(id);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Path("/Public")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Gibt Alle Benutzer zurück", description = "Gibt eine Liste mit allen Benutzern in der Datenbank zurück")
-    public List<Buchung> indexpublic() {
-        return buchungService.findAllPublic();
+    public List<Buchung> indexpublic() throws Exception {
+        try {
+            return buchungService.findAllPublic();
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @POST
+    @RolesAllowed({ "Mitglied", "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Erstellt einen neuen Benutzer", description = "Erstellt einen neuen Benutzer in der Datenbank und gibt diesen neuen Benutzer zurück.")
-    public Buchung create(Buchung Buchung) {
-       return buchungService.create(Buchung);
+    public Buchung create(Buchung Buchung) throws Exception {
+        try {
+            return buchungService.create(Buchung);
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
-    
     @Path("{id}")
     @DELETE
-    @RolesAllowed({"Admin"}) 
+    @RolesAllowed({ "Admin" })
     @Operation(summary = "Löscht einen Benutzer", description = "Löscht einen Benutzer")
-    public void delete(int id) {
-        buchungService.delete(id);
-        
+    public void delete(int id) throws Exception {
+        try {
+            buchungService.delete(id);
+        } catch (Exception e) {
+            throw e;
+        }
+
     }
 
     @Path("{id}")
     @PUT
-    @RolesAllowed({"Admin"}) 
+    @RolesAllowed({ "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Updated einen Benutzer", description = "Updated einen Benutzer in der Datenbank und gibt diesen gleich zurück")
-    public Buchung update(int id, Buchung Buchung) {
-        return buchungService.update(id, Buchung);
+    public Buchung update(int id, Buchung Buchung) throws Exception {
+        try {
+            return buchungService.update(id, Buchung);
+        } catch (Exception e) {
+            throw e;
+        }
     }
-    
 
 }

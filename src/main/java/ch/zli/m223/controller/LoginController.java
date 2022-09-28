@@ -27,9 +27,11 @@ public class LoginController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Gibt Alle Benutzer zurück", description = "Gibt eine Liste mit allen Benutzern in der Datenbank zurück")
-    public String login(Login login) {
+    public String login(Login login) throws Exception {
 
+        try {
         var query = userService.findAll();
+      
         var token = "Unsuccessful Login";
         for (User user2 : query) {
             String useremail = user2.getEmail();
@@ -42,6 +44,8 @@ public class LoginController {
         }
 
         return token;
-
+        } catch(Exception e){
+            throw e;
+        }
     }
 }

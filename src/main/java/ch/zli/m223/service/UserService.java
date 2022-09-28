@@ -7,12 +7,16 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
+import ch.zli.m223.model.Buchung;
 import ch.zli.m223.model.User;
 
 @ApplicationScoped
 public class UserService {
     @Inject
     private EntityManager entityManager;
+    @Inject
+    BuchungService buchungService;
+
 
     @Transactional
     public User createUser(User user) throws Exception {
@@ -49,6 +53,15 @@ public class UserService {
     public void delete(long id) throws Exception {
         try {
             User user = entityManager.find(User.class, id);
+            var buchungen = buchungService.findAllOfUser(user.getId().toString());
+
+            for (Buchung buchung : buchungen) {
+                if(buchung.getUser().getId() == user.getId()){
+                    entityManager.remove(buchung);
+                }
+            }
+            
+
             entityManager.remove(user);
         } catch (Exception e) {
             throw e;

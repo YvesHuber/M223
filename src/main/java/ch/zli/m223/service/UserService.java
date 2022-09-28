@@ -17,7 +17,10 @@ public class UserService {
     @Transactional
     public User createUser(User user) throws Exception {
         try {
+            // Autoincrement startet bei 1 und nicht bei 3 obwohl schon 2 Elemente vorhanden sind in der Datenbank
             entityManager.persist(user);
+            entityManager.flush();
+            entityManager.refresh(user);
             return user;
         } catch (Exception e) {
             throw e;

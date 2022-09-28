@@ -13,11 +13,9 @@ public class AuthenticationService {
 
         String token =
            Jwt.issuer("https://example.com/issuer") 
-             .claim("User_id", user.getId())
-             .upn(user.getEmail()) 
+             .upn(user.getId().toString()) 
              .groups(new HashSet<>(Arrays.asList(user.getRole()))) 
            .sign();
-        System.out.println(token);
         return token;
     }
     

@@ -8,15 +8,13 @@ import io.smallrye.jwt.build.Jwt;
 
 public class AuthenticationService {
 
-    public static String returnkey(User user){
+  public static String returnkey(User user) {
 
+    String token = Jwt.issuer("https://example.com/issuer")
+        .upn(user.getId().toString())
+        .groups(new HashSet<>(Arrays.asList(user.getRole())))
+        .sign();
+    return token;
+  }
 
-        String token =
-           Jwt.issuer("https://example.com/issuer") 
-             .upn(user.getId().toString()) 
-             .groups(new HashSet<>(Arrays.asList(user.getRole()))) 
-           .sign();
-        return token;
-    }
-    
 }

@@ -46,10 +46,10 @@ public class BuchungService {
             List<Buchung> buchungen = new ArrayList<>();
             var query = entityManager.createQuery("FROM Buchung", Buchung.class);
             for (Buchung buchung : query.getResultList()) {
-                if(buchung.getUser().getId().toString().equals(userid)){
+                if (buchung.getUser().getId().toString().equals(userid)) {
                     buchungen.add(buchung);
                 }
-                
+
             }
             return buchungen;
         } catch (Exception e) {
@@ -81,12 +81,13 @@ public class BuchungService {
     public Response delete(long id) throws Exception {
         try {
             Buchung buchung = entityManager.find(Buchung.class, id);
-            if(buchung.getUser().getId().toString().equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")){
+            if (buchung.getUser().getId().toString().equals(jwt.getName())
+                    || jwt.getGroups().iterator().next().equals("Admin")) {
                 entityManager.remove(buchung);
                 return Response.ok().build();
-            }else {
-                //Nicht eigene Buchung und oder Kein Admin zum bearbeiten
-                return Response.status(Response.Status.BAD_REQUEST).build(); 
+            } else {
+                // Nicht eigene Buchung und oder Kein Admin zum bearbeiten
+                return Response.status(Response.Status.BAD_REQUEST).build();
 
             }
         } catch (Exception e) {
@@ -98,16 +99,15 @@ public class BuchungService {
     @Transactional
     public Response update(long id, Buchung buchung) throws Exception {
         try {
-            if(buchung.getUser().getId().toString().equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")){
+            if (buchung.getUser().getId().toString().equals(jwt.getName())
+                    || jwt.getGroups().iterator().next().equals("Admin")) {
                 entityManager.merge(buchung);
                 return Response.ok(buchung).build();
-            }else {
-                //Nicht eigene Buchung und oder Kein Admin zum bearbeiten
-                return Response.status(Response.Status.BAD_REQUEST).build(); 
+            } else {
+                // Nicht eigene Buchung und oder Kein Admin zum bearbeiten
+                return Response.status(Response.Status.BAD_REQUEST).build();
 
             }
-
-
 
         } catch (Exception e) {
             throw e;

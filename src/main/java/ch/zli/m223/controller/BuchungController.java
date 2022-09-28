@@ -96,7 +96,7 @@ public class BuchungController {
 
     @Path("{id}")
     @PUT
-    @RolesAllowed({"Mitglied", "Admin" })
+    @RolesAllowed({ "Mitglied", "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Updated eine Buchung", description = "Updated eine Buchen in der Datenbank und gibt diese gleich zurück")

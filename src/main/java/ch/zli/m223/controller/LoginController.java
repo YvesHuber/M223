@@ -1,4 +1,5 @@
 package ch.zli.m223.controller;
+
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -28,21 +29,21 @@ public class LoginController {
     public String login(Login login) throws Exception {
 
         try {
-        var query = userService.findAll();
-      
-        var token = "Unsuccessful Login";
-        for (User user2 : query) {
-            String useremail = user2.getEmail();
-            String userpassword = user2.getPasswort();
+            var query = userService.findAll();
 
-            if(useremail.equals(login.getEmail()) && userpassword.equals(login.getPasswort())){
-                token = loginService.login(user2);
-                System.out.println(loginService.login(user2));
+            var token = "Unsuccessful Login";
+            for (User user2 : query) {
+                String useremail = user2.getEmail();
+                String userpassword = user2.getPasswort();
+
+                if (useremail.equals(login.getEmail()) && userpassword.equals(login.getPasswort())) {
+                    token = loginService.login(user2);
+                    System.out.println(loginService.login(user2));
+                }
             }
-        }
 
-        return token;
-        } catch(Exception e){
+            return token;
+        } catch (Exception e) {
             throw e;
         }
     }

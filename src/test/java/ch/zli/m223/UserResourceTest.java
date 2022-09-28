@@ -17,10 +17,10 @@ public class UserResourceTest {
     @Test
     public void testUserGet() {
         given()
-                .when().get("/User")
-                .then()
-                .statusCode(401)
-                .body(is(""));
+            .when().get("/User")
+            .then()
+            .statusCode(401)
+            .body(is(""));
     }
 
     @Test

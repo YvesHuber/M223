@@ -17,11 +17,11 @@ public class UserService {
     @Inject
     BuchungService buchungService;
 
-
     @Transactional
     public User createUser(User user) throws Exception {
         try {
-            // Autoincrement startet bei 1 und nicht bei 3 obwohl schon 2 Elemente vorhanden sind in der Datenbank
+            // Autoincrement startet bei 1 und nicht bei 3 obwohl schon 2 Elemente vorhanden
+            // sind in der Datenbank
             entityManager.persist(user);
             entityManager.flush();
             entityManager.refresh(user);
@@ -56,11 +56,10 @@ public class UserService {
             var buchungen = buchungService.findAllOfUser(user.getId().toString());
 
             for (Buchung buchung : buchungen) {
-                if(buchung.getUser().getId() == user.getId()){
+                if (buchung.getUser().getId() == user.getId()) {
                     entityManager.remove(buchung);
                 }
             }
-            
 
             entityManager.remove(user);
         } catch (Exception e) {

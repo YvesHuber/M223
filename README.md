@@ -1,8 +1,9 @@
 # AbschlussProjekt Modul 223
 
-Dies ist eine Programm zur registrierung von Buchungen in einem CoWorkingSpace
+Dies ist eine API in welcher User erstellt werden können und diese können sich
+dann registrieren in einem CoWorkingSpace.
 
-## Programm starten
+## Programm starten und Aufsetzten
 
 1. Das Projekt in Visual Studio Code öffnen
 1. Das Projekt im DevContainer Öffnen
@@ -10,9 +11,9 @@ Dies ist eine Programm zur registrierung von Buchungen in einem CoWorkingSpace
 1. Das Projekt ist auf http://localhost:8080 erreichbar
 
 
-### Datenbankadministration
+## Datenbankadministration
 
-Über http://localhost:5050 ist PgAdmin4 erreichbar. Damit lässt sich die Datenbank komfortabel verwalten. Der Benutzername lautet `zli@example.com` und das Passwort `zli*123`. Die Verbindung zur PostgreSQL-Datenbank muss zuerst mit folgenden Daten konfiguriert werden:
+Über http://localhost:5050 ist PgAdmin4 erreichbar. Damit kann man die Datenbank verwalten. Der Benutzername lautet `zli@example.com` und das Passwort `zli*123`. Die Verbindung zu der Datenbank muss zuerst mit den Folgenden Daten aufgebaut werden.
  - Host name/address: `db`
  - Port: `5432`
  - Maintenance database: `postgres`
@@ -25,4 +26,6 @@ Die automatischen Tests können mit `./mvnw quarkus:test` ausgeführt werden. F�
 
 ## Testdaten
 
-Die testdaten werden hinzugefügt sobald das Programm gestartet wird
+Die Testdaten werden hinzugefügt sobald das Programm gestartet wird
+
+

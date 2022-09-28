@@ -6,6 +6,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -97,11 +98,11 @@ public class BuchungController {
 
     @Path("{id}")
     @PUT
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed({"Mitglied", "Admin" })
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Operation(summary = "Updated einen Benutzer", description = "Updated einen Benutzer in der Datenbank und gibt diesen gleich zurück")
-    public Buchung update(int id, Buchung Buchung) throws Exception {
+    public Response update(int id, Buchung Buchung) throws Exception {
         try {
             return buchungService.update(id, Buchung);
         } catch (Exception e) {

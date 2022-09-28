@@ -26,7 +26,7 @@ public class LoginController {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    @Operation(summary = "Gibt Alle Benutzer zurück", description = "Gibt eine Liste mit allen Benutzern in der Datenbank zurück")
+    @Operation(summary = "Login", description = "Gibt ein JWT zurück wenn sich der User richtige Anmeldedaten geschickt hat")
     public String login(Login login) throws Exception {
 
         try {

@@ -1,5 +1,4 @@
 package ch.zli.m223.model;
-import java.util.Set;
 import javax.persistence.*;
 import java.time.LocalDate;
 

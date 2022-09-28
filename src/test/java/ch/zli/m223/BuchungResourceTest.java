@@ -1,23 +1,12 @@
 package ch.zli.m223;
 
 import io.quarkus.test.junit.QuarkusTest;
-import io.quarkus.test.security.TestSecurity;
-import io.restassured.http.ContentType;
-import io.vertx.core.json.JsonObject;
-
 import org.junit.jupiter.api.Test;
-
-import ch.zli.m223.controller.LoginController;
-import ch.zli.m223.model.Login;
 import ch.zli.m223.model.User;
 import ch.zli.m223.service.AuthenticationService;
-
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 
-import java.time.LocalDateTime;
-
-import org.h2.util.json.JSONObject;
 
 
 @QuarkusTest

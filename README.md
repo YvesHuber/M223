@@ -28,6 +28,18 @@ Die automatischen Tests können mit `./mvnw quarkus:test` ausgeführt werden. F�
 
 Die Testdaten werden hinzugefügt sobald das Programm gestartet wird
 
-## Github
+## Anmeldedaten
 
-https://github.com/YvesHuber/M223
+
+#### AdminUser
+ - Email: Test@Admin.test
+ - Passwort: 123456
+
+#### Mitglied
+ - Email: Test@Mitglied.test
+ - Passwort: 123456
+
+http://localhost:8080/login
+
+## Github
+ [GitHub Link](https://github.com/YvesHuberM223).

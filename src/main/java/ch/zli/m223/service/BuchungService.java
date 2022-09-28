@@ -6,6 +6,9 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import javax.ws.rs.core.Response;
+
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import ch.zli.m223.model.Buchung;
 
@@ -13,6 +16,8 @@ import ch.zli.m223.model.Buchung;
 public class BuchungService {
     @Inject
     private EntityManager entityManager;
+    @Inject
+    JsonWebToken jwt;
 
     @Transactional
     public Buchung create(Buchung buchung) throws Exception {
@@ -65,10 +70,17 @@ public class BuchungService {
     }
 
     @Transactional
-    public void delete(long id) throws Exception {
+    public Response delete(long id) throws Exception {
         try {
             Buchung buchung = entityManager.find(Buchung.class, id);
-            entityManager.remove(buchung);
+            if(buchung.getUser().getId().toString().equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")){
+                entityManager.remove(buchung);
+                return Response.ok().build();
+            }else {
+                //Nicht eigene Buchung und oder Kein Admin zum bearbeiten
+                return Response.status(Response.Status.BAD_REQUEST).build(); 
+
+            }
         } catch (Exception e) {
             throw e;
         }
@@ -76,10 +88,19 @@ public class BuchungService {
     }
 
     @Transactional
-    public Buchung update(long id, Buchung buchung) throws Exception {
+    public Response update(long id, Buchung buchung) throws Exception {
         try {
-            entityManager.merge(buchung);
-            return buchung;
+            if(buchung.getUser().getId().toString().equals(jwt.getName()) || jwt.getGroups().iterator().next().equals("Admin")){
+                entityManager.merge(buchung);
+                return Response.ok(buchung).build();
+            }else {
+                //Nicht eigene Buchung und oder Kein Admin zum bearbeiten
+                return Response.status(Response.Status.BAD_REQUEST).build(); 
+
+            }
+
+
+
         } catch (Exception e) {
             throw e;
         }

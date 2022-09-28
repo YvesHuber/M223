@@ -16,16 +16,9 @@ public class LoginService {
 
     public String login(User user) {
         var token = "";
-        var query = entityManager.createQuery("FROM User", User.class).getResultList();
-        for (User user2 : query) {
-            if(user2.getVorname().equals(user.getVorname()) && user2.getPasswort().equals(user.getPasswort())){
-                token = AuthenticationService.returnkey(user2);
-            }
-            else{
-                token = "Unsuccessfull login";
-            }
-        }
         
+        token = AuthenticationService.returnkey(user);
+          
         return token;
     }
     

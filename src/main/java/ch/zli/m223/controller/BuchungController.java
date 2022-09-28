@@ -12,6 +12,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import ch.zli.m223.model.Buchung;
 import ch.zli.m223.model.User;
 import ch.zli.m223.service.BuchungService;
+import ch.zli.m223.service.UserService;
 
 
 @Path("/Buchung")
@@ -19,20 +20,24 @@ import ch.zli.m223.service.BuchungService;
 public class BuchungController {
 
     @Inject
-    JsonWebToken jwt;
     BuchungService buchungService;
+
+    @Inject
+    JsonWebToken jwt;
+    
 
     @GET
     @RolesAllowed({"Mitglied", "Admin"}) 
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Gibt Alle Benutzer zurück", description = "Gibt eine Liste mit allen Benutzern in der Datenbank zurück")
     public List<Buchung> index() {
-        User user = jwt.getClaim("User");
-        if (user.getRole().equals("Admin")){
+        var userid = jwt.getName();
+        var groups = jwt.getGroups();
+        if (groups.iterator().next().equals("Admin")){
             return buchungService.findAll();
         }
         else {
-            return buchungService.findAllOfUser(user);
+            return buchungService.findAllOfUser(userid);
         }
         
     }
@@ -48,7 +53,6 @@ public class BuchungController {
 
     @Path("/Public")
     @GET
-    @RolesAllowed({"Mitglied","Admin"}) 
     @Produces(MediaType.APPLICATION_JSON)
     @Operation(summary = "Gibt Alle Benutzer zurück", description = "Gibt eine Liste mit allen Benutzern in der Datenbank zurück")
     public List<Buchung> indexpublic() {

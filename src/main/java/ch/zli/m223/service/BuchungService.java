@@ -32,8 +32,8 @@ public class BuchungService {
         return query.getResultList();
     }
 
-    public List<Buchung> findAllOfUser(User user) {
-        var query = entityManager.createQuery("FROM Buchung Where user_id = "+user, Buchung.class);
+    public List<Buchung> findAllOfUser(String userid) {
+        var query = entityManager.createQuery("FROM Buchung Where user_id = "+userid, Buchung.class);
         return query.getResultList();
     }
 
